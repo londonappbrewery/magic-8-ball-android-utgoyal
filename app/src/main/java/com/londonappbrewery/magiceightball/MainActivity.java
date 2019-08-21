@@ -15,20 +15,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final int[] ballArray = {
+                R.drawable.ball1,
+                R.drawable.ball2,
+                R.drawable.ball3,
+                R.drawable.ball4,
+                R.drawable.ball5,
+        };
+        Button askMe = findViewById(R.id.askMe);
+        final ImageView magicBall = findViewById(R.id.imageView2);
 
-        Button button = (Button)findViewById(R.id.askButton);
-        final ImageView imageView = (ImageView) findViewById(R.id.imageView);
-
-        button.setOnClickListener(new View.OnClickListener() {
+        askMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Random randomNumber = new Random();
-                int number = randomNumber.nextInt(5);
-                Log.d("Magic","Random number generated was"+ number);
-
-                int[] magicArray ={R.drawable.ball1, R.drawable.ball2, R.drawable.ball3, R.drawable.ball4, R.drawable.ball5};
-                imageView.setImageResource(magicArray[number]);
+                Log.d("Ask Me", "I have answers for you!");
+                Random random = new Random();
+                int number = random.nextInt(5);
+                Log.d("Random Number", "number " +number);
+                magicBall.setImageResource(ballArray[number]);
             }
         });
+
+
     }
 }
